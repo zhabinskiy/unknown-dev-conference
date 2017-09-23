@@ -56,3 +56,8 @@ fastlane/screenshots
 .gitattributes
 .buckconfig
 __tests__/
+
+# Haul
+#
+haul-debug.log
+.happypack
