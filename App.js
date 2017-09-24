@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StatusBar } from 'react-native';
 import styled from 'styled-components/native';
 
@@ -60,17 +60,45 @@ const Label = styled.Text`
   color: #3843e9;
 `;
 
-export default () => (
-  <Wrapper>
-    <StatusBar barStyle="light-content" />
-    <Image source={require('./circle1.png')} />
-    <Image source={require('./circle2.png')} style={{ marginTop: 66 }} />
-    <Title>Unknown Dev Conference</Title>
-    <Subtitle>APRIL 18 + 19 / SAN JOSE, CALIFORNIA</Subtitle>
-    <Line />
-    <Button>
-      <Logo source={require('./facebook.png')} />
-      <Label>Sign In with Facebook</Label>
-    </Button>
-  </Wrapper>
-);
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      isTapped: false,
+    };
+
+    this.buttonTapped = this.buttonTapped.bind(this);
+  }
+
+  buttonTapped() {
+    this.setState(prevState => ({
+      isTapped: !prevState.isTapped,
+    }));
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        <StatusBar barStyle="light-content" />
+        <Image source={require('./circle1.png')} />
+        <Image source={require('./circle2.png')} style={{ marginTop: 66 }} />
+        <Title>Unknown Dev Conference</Title>
+        <Subtitle>APRIL 18 + 19 / SAN JOSE, CALIFORNIA</Subtitle>
+        <Line />
+        {this.state.isTapped ? (
+          <Button onPress={this.buttonTapped}>
+            <Image source={require('./loader.gif')} />
+          </Button>
+        ) : (
+          <Button onPress={this.buttonTapped}>
+            <Logo source={require('./facebook.png')} />
+            <Label>Sign In with Facebook</Label>
+          </Button>
+        )}
+      </Wrapper>
+    );
+  }
+}
+
+export default App;
