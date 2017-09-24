@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { StatusBar } from 'react-native';
+import { StatusBar, AlertIOS, AsyncStorage } from 'react-native';
+import { LoginManager, AccessToken } from 'react-native-fbsdk';
 import styled from 'styled-components/native';
 
 const Wrapper = styled.View`
   background: #3843e9;
   flex: 1;
+  width: 100%;
   justify-content: center;
   align-items: center;
 `;
@@ -47,7 +49,7 @@ const Button = styled.TouchableOpacity`
   bottom: 20px;
 `;
 
-const Logo = styled.Image`
+const Facebook = styled.Image`
   position: absolute;
   left: 20px;
 `;
@@ -60,39 +62,60 @@ const Label = styled.Text`
   color: #3843e9;
 `;
 
-class App extends Component {
+class Login extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isTapped: false,
+      isLoading: false,
     };
 
-    this.buttonTapped = this.buttonTapped.bind(this);
+    this.login = this.login.bind(this);
   }
 
-  buttonTapped() {
-    this.setState(prevState => ({
-      isTapped: !prevState.isTapped,
-    }));
+  login() {
+    this.setState({
+      isLoading: true,
+    });
+
+    LoginManager.logInWithReadPermissions(['public_profile']).then(
+      (result) => {
+        if (result.isCancelled) {
+          this.setState({
+            isLoading: false,
+          });
+        } else {
+          AccessToken.getCurrentAccessToken().then((data) => {
+            AsyncStorage.setItem('accessToken', data.accessToken.toString());
+          });
+        }
+      },
+      (error) => {
+        AlertIOS.alert('Error', `Login failed with error: ${error}`, () =>
+          this.setState({
+            isLoading: false,
+          }),
+        );
+      },
+    );
   }
 
   render() {
     return (
       <Wrapper>
         <StatusBar barStyle="light-content" />
-        <Image source={require('./circle1.png')} />
-        <Image source={require('./circle2.png')} style={{ marginTop: 66 }} />
+        <Image source={require('./images/circle1.png')} />
+        <Image source={require('./images/circle2.png')} style={{ marginTop: 66 }} />
         <Title>Unknown Dev Conference</Title>
         <Subtitle>APRIL 18 + 19 / SAN JOSE, CALIFORNIA</Subtitle>
         <Line />
-        {this.state.isTapped ? (
-          <Button onPress={this.buttonTapped}>
-            <Image source={require('./loader.gif')} />
+        {this.state.isLoading ? (
+          <Button disabled>
+            <Image source={require('./images/loader.gif')} />
           </Button>
         ) : (
-          <Button onPress={this.buttonTapped}>
-            <Logo source={require('./facebook.png')} />
+          <Button onPress={this.login}>
+            <Facebook source={require('./images/facebook.png')} />
             <Label>Sign In with Facebook</Label>
           </Button>
         )}
@@ -101,4 +124,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default Login;
