@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import { StatusBar, AlertIOS, AsyncStorage } from 'react-native';
-import { LoginManager, AccessToken } from 'react-native-fbsdk';
+import { Navigation } from 'react-native-navigation';
+import { LoginManager, AccessToken, GraphRequest, GraphRequestManager } from 'react-native-fbsdk';
 import styled from 'styled-components/native';
 
 const Wrapper = styled.View`
+  position: relative;
+  bottom: 0;
   background: #3843e9;
   flex: 1;
   width: 100%;
@@ -86,7 +89,39 @@ class Login extends Component {
           });
         } else {
           AccessToken.getCurrentAccessToken().then((data) => {
-            AsyncStorage.setItem('accessToken', data.accessToken.toString());
+            const accessToken = data.accessToken.toString();
+
+            AsyncStorage.setItem('accessToken', accessToken);
+
+            const responseInfoCallback = (err, res) => {
+              if (err) {
+                console.log(err);
+              } else {
+                AsyncStorage.multiSet([
+                  ['userId', res.id.toString()],
+                  ['userName', res.name.toString()],
+                  ['userPhoto', res.picture.data.url.toString()],
+                ]);
+                Navigation.dismissModal({
+                  animationType: 'slide-down',
+                });
+              }
+            };
+
+            const infoRequest = new GraphRequest(
+              '/me',
+              {
+                accessToken,
+                parameters: {
+                  fields: {
+                    string: 'name, picture',
+                  },
+                },
+              },
+              responseInfoCallback,
+            );
+
+            new GraphRequestManager().addRequest(infoRequest).start();
           });
         }
       },
