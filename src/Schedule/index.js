@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { AsyncStorage, StatusBar } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import { LoginManager } from 'react-native-fbsdk';
 import styled from 'styled-components/native';
 import Tabs from './Tabs';
 
@@ -48,6 +50,27 @@ export default class Schedule extends Component {
     this.setState({ selectedTabIndex: index });
   }
 
+  logout() {
+    LoginManager.logOut();
+    AsyncStorage.multiRemove(['accessToken', 'userId', 'userName', 'userPhoto']);
+    this.setState({
+      accessToken: null,
+      user: {
+        id: null,
+        name: null,
+        photo: null,
+      },
+    });
+    Navigation.showModal({
+      screen: 'UnknownDevConference.Login',
+      title: 'Login',
+      navigatorStyle: {
+        navBarHidden: true,
+      },
+      animationType: 'slide-up',
+    });
+  }
+
   render() {
     return (
       <Wrapper>
@@ -57,7 +80,11 @@ export default class Schedule extends Component {
           onPressDay2={() => this.selectTab(1)}
           isSelectedTabIndex={this.state.selectedTabIndex}
         />
-        {!this.state.selectedTabIndex ? <Title>Day 1</Title> : <Title>Day 2</Title>}
+        {!this.state.selectedTabIndex ? (
+          <Title onPress={this.logout.bind(this)}>Day 1</Title>
+        ) : (
+          <Title>Day 2</Title>
+        )}
       </Wrapper>
     );
   }
