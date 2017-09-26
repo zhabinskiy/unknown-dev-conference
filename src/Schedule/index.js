@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { AsyncStorage, StatusBar } from 'react-native';
 import styled from 'styled-components/native';
+import Tabs from './Tabs';
 
 const Wrapper = styled.View`
   flex: 1;
@@ -8,16 +9,7 @@ const Wrapper = styled.View`
   background: #fffff8;
 `;
 
-const Tabs = styled.View`
-  font-family: BasisGrotesqueProMono;
-  font-size: 12px;
-  color: #ffffff;
-  padding-bottom: 10px;
-`;
-
-const Tab = styled.TouchableOpacity``;
-
-const Label = styled.Text``;
+const Title = styled.Text``;
 
 export default class Schedule extends Component {
   constructor(props) {
@@ -30,9 +22,9 @@ export default class Schedule extends Component {
         name: null,
         photo: null,
       },
+      selectedTabIndex: 0,
     };
-
-    this.logout = this.logout.bind(this);
+    this.selectTab = this.selectTab.bind(this);
   }
 
   componentDidMount() {
@@ -52,18 +44,20 @@ export default class Schedule extends Component {
     }
   }
 
+  selectTab(index) {
+    this.setState({ selectedTabIndex: index });
+  }
+
   render() {
     return (
       <Wrapper>
         <StatusBar barStyle="light-content" />
-        <Tabs>
-          <Tab>
-            <Label>Day 1</Label>
-          </Tab>
-          <Tab>
-            <Label>Day 2</Label>
-          </Tab>
-        </Tabs>
+        <Tabs
+          onPressDay1={() => this.selectTab(0)}
+          onPressDay2={() => this.selectTab(1)}
+          isSelectedTabIndex={this.state.selectedTabIndex}
+        />
+        {!this.state.selectedTabIndex ? <Title>Day 1</Title> : <Title>Day 2</Title>}
       </Wrapper>
     );
   }
