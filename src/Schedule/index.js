@@ -5,9 +5,11 @@ import { LoginManager } from 'react-native-fbsdk';
 import styled from 'styled-components/native';
 import Tabs from './Tabs';
 
-const Wrapper = styled.View`
-  flex: 1;
+const Wrapper = styled.View``;
+
+const ScrollView = styled.ScrollView`
   width: 100%;
+  height: 100%;
   background: #fffff8;
 `;
 
@@ -80,11 +82,13 @@ export default class Schedule extends Component {
           onPressDay2={() => this.selectTab(1)}
           isSelectedTabIndex={this.state.selectedTabIndex}
         />
-        {!this.state.selectedTabIndex ? (
-          <Title onPress={this.logout.bind(this)}>Day 1</Title>
-        ) : (
-          <Title>Day 2</Title>
-        )}
+        <ScrollView>
+          {!this.state.selectedTabIndex ? (
+            <Title onPress={this.logout.bind(this)}>Day 1</Title>
+          ) : (
+            <Title>Day 2</Title>
+          )}
+        </ScrollView>
       </Wrapper>
     );
   }
