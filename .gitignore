@@ -56,4 +56,3 @@ fastlane/screenshots
 .gitattributes
 .buckconfig
 __tests__/
-fonts/
