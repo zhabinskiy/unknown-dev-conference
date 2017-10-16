@@ -7,7 +7,7 @@ import Schedule from './Schedule';
 // Looking for access token
 try {
   AsyncStorage.getItem('accessToken').then((value) => {
-    if (value === null) {
+    if (!value) {
       // Show Login modal if user not logged in
       Navigation.showModal({
         screen: 'UnknownDevConference.Login',
@@ -46,6 +46,9 @@ Navigation.startTabBasedApp({
         navBarBackgroundColor: '#3843e9',
         navBarButtonColor: '#ffffff',
         navBarNoBorder: true,
+        navBarRightButtonFontSize: 12,
+        navBarRightButtonFontFamily: 'BasisGrotesqueProMono',
+        navBarRightButtonColor: '#ffffff',
       },
     },
     {
@@ -61,6 +64,9 @@ Navigation.startTabBasedApp({
         navBarBackgroundColor: '#3843e9',
         navBarButtonColor: '#ffffff',
         navBarNoBorder: true,
+        navBarRightButtonFontSize: 12,
+        navBarRightButtonFontFamily: 'BasisGrotesqueProMono',
+        navBarRightButtonColor: '#ffffff',
       },
     },
     {
@@ -76,6 +82,9 @@ Navigation.startTabBasedApp({
         navBarBackgroundColor: '#3843e9',
         navBarButtonColor: '#ffffff',
         navBarNoBorder: true,
+        navBarRightButtonFontSize: 12,
+        navBarRightButtonFontFamily: 'BasisGrotesqueProMono',
+        navBarRightButtonColor: '#ffffff',
       },
     },
     {
@@ -91,6 +100,9 @@ Navigation.startTabBasedApp({
         navBarBackgroundColor: '#3843e9',
         navBarButtonColor: '#ffffff',
         navBarNoBorder: true,
+        navBarRightButtonFontSize: 12,
+        navBarRightButtonFontFamily: 'BasisGrotesqueProMono',
+        navBarRightButtonColor: '#ffffff',
       },
     },
     {
@@ -106,6 +118,9 @@ Navigation.startTabBasedApp({
         navBarBackgroundColor: '#3843e9',
         navBarButtonColor: '#ffffff',
         navBarNoBorder: true,
+        navBarRightButtonFontSize: 12,
+        navBarRightButtonFontFamily: 'BasisGrotesqueProMono',
+        navBarRightButtonColor: '#ffffff',
       },
     },
   ],
@@ -115,5 +130,8 @@ Navigation.startTabBasedApp({
     tabBarLabelColor: '#a4aab3',
     tabBarSelectedLabelColor: '#3843e9',
     tabBarBackgroundColor: '#fffff8',
+    navBarRightButtonFontSize: 12,
+    navBarRightButtonFontFamily: 'BasisGrotesqueProMono',
+    navBarRightButtonColor: '#ffffff',
   },
 });

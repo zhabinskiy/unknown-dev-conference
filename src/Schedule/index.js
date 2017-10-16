@@ -1,17 +1,29 @@
 import React, { Component } from 'react';
 import { AsyncStorage, StatusBar } from 'react-native';
+import { Navigation } from 'react-native-navigation';
+import { LoginManager } from 'react-native-fbsdk';
 import styled from 'styled-components/native';
 import Tabs from './Tabs';
+import { Day1, Day2 } from './Days';
 
-const Wrapper = styled.View`
-  flex: 1;
+const Wrapper = styled.View``;
+
+const ScrollView = styled.ScrollView`
   width: 100%;
+  height: 100%;
   background: #fffff8;
 `;
 
-const Title = styled.Text``;
-
 export default class Schedule extends Component {
+  static navigatorButtons = {
+    rightButtons: [
+      {
+        title: 'FILTER',
+        id: 'filter',
+      },
+    ],
+  };
+
   constructor(props) {
     super(props);
 
@@ -24,7 +36,7 @@ export default class Schedule extends Component {
       },
       selectedTabIndex: 0,
     };
-    this.selectTab = this.selectTab.bind(this);
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   componentDidMount() {
@@ -44,8 +56,36 @@ export default class Schedule extends Component {
     }
   }
 
+  onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'filter') {
+      }
+    }
+  }
+
   selectTab(index) {
     this.setState({ selectedTabIndex: index });
+  }
+
+  logout() {
+    LoginManager.logOut();
+    AsyncStorage.multiRemove(['accessToken', 'userId', 'userName', 'userPhoto']);
+    this.setState({
+      accessToken: null,
+      user: {
+        id: null,
+        name: null,
+        photo: null,
+      },
+    });
+    Navigation.showModal({
+      screen: 'UnknownDevConference.Login',
+      title: 'Login',
+      navigatorStyle: {
+        navBarHidden: true,
+      },
+      animationType: 'slide-up',
+    });
   }
 
   render() {
@@ -55,9 +95,9 @@ export default class Schedule extends Component {
         <Tabs
           onPressDay1={() => this.selectTab(0)}
           onPressDay2={() => this.selectTab(1)}
-          isSelectedTabIndex={this.state.selectedTabIndex}
+          selectedTabIndex={this.state.selectedTabIndex}
         />
-        {!this.state.selectedTabIndex ? <Title>Day 1</Title> : <Title>Day 2</Title>}
+        <ScrollView>{!this.state.selectedTabIndex ? <Day1 /> : <Day2 />}</ScrollView>
       </Wrapper>
     );
   }

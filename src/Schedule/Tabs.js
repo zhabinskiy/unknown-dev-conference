@@ -24,11 +24,11 @@ const Label = styled.Text`
 
 export default props => (
   <Tabs>
-    <Tab onPress={props.onPressDay1} isSelected={!props.isSelectedTabIndex}>
-      <Label isSelected={!props.isSelectedTabIndex}>DAY 1</Label>
+    <Tab onPress={props.onPressDay1} isSelected={!props.selectedTabIndex}>
+      <Label isSelected={!props.selectedTabIndex}>DAY 1</Label>
     </Tab>
-    <Tab onPress={props.onPressDay2} isSelected={props.isSelectedTabIndex}>
-      <Label isSelected={props.isSelectedTabIndex}>DAY 2</Label>
+    <Tab onPress={props.onPressDay2} isSelected={props.selectedTabIndex}>
+      <Label isSelected={props.selectedTabIndex}>DAY 2</Label>
     </Tab>
   </Tabs>
 );

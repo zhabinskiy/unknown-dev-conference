@@ -42,6 +42,7 @@
 		<string>BasisGrotesqueProMono-Bold.ttf</string>
 		<string>CircularStd-Bold.ttf</string>
 		<string>BasisGrotesqueProMono.ttf</string>
+		<string>CircularStd-Book.ttf</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

@@ -97,13 +97,33 @@ class Login extends Component {
               if (err) {
                 console.log(err);
               } else {
+                // Set auth data to AsyncStorage
                 AsyncStorage.multiSet([
                   ['userId', res.id.toString()],
                   ['userName', res.name.toString()],
                   ['userPhoto', res.picture.data.url.toString()],
                 ]);
+                // Close Login modal
                 Navigation.dismissModal({
                   animationType: 'slide-down',
+                });
+                // Show Schedule tab
+                this.props.navigator.resetTo({
+                  screen: 'UnknownDevConference.Schedule',
+                  title: 'Schedule',
+                  label: 'Schedule',
+                  icon: require('../images/Ic_star.png'),
+                  selectedIcon: require('../images/Ic_star_active.png'),
+                  animated: true,
+                  animationType: 'fade',
+                  navigatorStyle: {
+                    navBarTextColor: '#fff800',
+                    navBarTextFontSize: 18,
+                    navBarTextFontFamily: 'CircularStd-Bold',
+                    navBarBackgroundColor: '#3843e9',
+                    navBarButtonColor: '#ffffff',
+                    navBarNoBorder: true,
+                  },
                 });
               }
             };

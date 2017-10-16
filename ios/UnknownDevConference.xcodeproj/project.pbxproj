@@ -45,6 +45,7 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		6C1ACBAC7AA8423FB3568C5C /* BasisGrotesqueProMono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7181C495733642BBAE692B99 /* BasisGrotesqueProMono.ttf */; };
+		FE644D220D344D929BE58477 /* CircularStd-Book.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD4E7D1D7A3D40EDB81DE5C7 /* CircularStd-Book.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -333,6 +334,7 @@
 		855BD2962FFE4BCEA2C04BC0 /* BasisGrotesqueProMono-Bold.otf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "BasisGrotesqueProMono-Bold.otf"; path = "../fonts/BasisGrotesqueProMono-Bold.otf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		7181C495733642BBAE692B99 /* BasisGrotesqueProMono.ttf */ = {isa = PBXFileReference; name = "BasisGrotesqueProMono.ttf"; path = "../fonts/BasisGrotesqueProMono.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		FD4E7D1D7A3D40EDB81DE5C7 /* CircularStd-Book.ttf */ = {isa = PBXFileReference; name = "CircularStd-Book.ttf"; path = "../fonts/CircularStd-Book.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -513,6 +515,7 @@
 				707E0AD4CD8B4ADDA8A6EDD8 /* BasisGrotesqueProMono-Bold.ttf */,
 				1B28950545F5436BBAF5E791 /* CircularStd-Bold.ttf */,
 				7181C495733642BBAE692B99 /* BasisGrotesqueProMono.ttf */,
+				FD4E7D1D7A3D40EDB81DE5C7 /* CircularStd-Book.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1071,6 +1074,7 @@
 				04B3615A84E84740BE802F88 /* BasisGrotesqueProMono-Bold.ttf in Resources */,
 				1B50FB38BB704AF2BA154018 /* CircularStd-Bold.ttf in Resources */,
 				6C1ACBAC7AA8423FB3568C5C /* BasisGrotesqueProMono.ttf in Resources */,
+				FE644D220D344D929BE58477 /* CircularStd-Book.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
     "react-native": "0.48.4",
     "react-native-fbsdk": "0.6.0",
     "react-native-navigation": "^1.1.230",
+    "react-native-scrollable-tab-view": "^0.6.7",
     "styled-components": "^2.1.2"
   },
   "devDependencies": {
