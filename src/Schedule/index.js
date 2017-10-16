@@ -4,6 +4,7 @@ import { Navigation } from 'react-native-navigation';
 import { LoginManager } from 'react-native-fbsdk';
 import styled from 'styled-components/native';
 import Tabs from './Tabs';
+import { Day1, Day2 } from './Days';
 
 const Wrapper = styled.View``;
 
@@ -13,9 +14,16 @@ const ScrollView = styled.ScrollView`
   background: #fffff8;
 `;
 
-const Title = styled.Text``;
-
 export default class Schedule extends Component {
+  static navigatorButtons = {
+    rightButtons: [
+      {
+        title: 'FILTER',
+        id: 'filter',
+      },
+    ],
+  };
+
   constructor(props) {
     super(props);
 
@@ -28,7 +36,7 @@ export default class Schedule extends Component {
       },
       selectedTabIndex: 0,
     };
-    this.selectTab = this.selectTab.bind(this);
+    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
   }
 
   componentDidMount() {
@@ -45,6 +53,13 @@ export default class Schedule extends Component {
       });
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  onNavigatorEvent(event) {
+    if (event.type === 'NavBarButtonPress') {
+      if (event.id === 'filter') {
+      }
     }
   }
 
@@ -80,15 +95,9 @@ export default class Schedule extends Component {
         <Tabs
           onPressDay1={() => this.selectTab(0)}
           onPressDay2={() => this.selectTab(1)}
-          isSelectedTabIndex={this.state.selectedTabIndex}
+          selectedTabIndex={this.state.selectedTabIndex}
         />
-        <ScrollView>
-          {!this.state.selectedTabIndex ? (
-            <Title onPress={this.logout.bind(this)}>Day 1</Title>
-          ) : (
-            <Title>Day 2</Title>
-          )}
-        </ScrollView>
+        <ScrollView>{!this.state.selectedTabIndex ? <Day1 /> : <Day2 />}</ScrollView>
       </Wrapper>
     );
   }
