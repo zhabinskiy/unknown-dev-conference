@@ -1,6 +1,6 @@
 # Unknown Dev Conference
 
-Study project based on [React Native (0.48.4)](https://github.com/facebook/react-native/tree/v0.48.4). I've started this project to learn React Native (obviously), but also I wanted to know about the process of development a full application.
+Study project based on [React Native (0.48.4)](https://github.com/facebook/react-native/tree/v0.48.4). I've started this project to learn React Native and understand the development process of full application.
 
 ### Start a project
 
