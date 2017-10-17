@@ -2,7 +2,7 @@
 
 Study project based on [React Native (0.48.4)](https://github.com/facebook/react-native/tree/v0.48.4). I've started this project to learn React Native and understand the development process of full application.
 
-![](https://cdn-images-1.medium.com/max/2000/1*OjSfHOCTdJ1Wl1ByRCmiRw.png =890x)
+![](https://cdn-images-1.medium.com/max/2000/1*OjSfHOCTdJ1Wl1ByRCmiRw.png)
 
 ### Start a project
 
