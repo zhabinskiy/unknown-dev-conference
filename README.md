@@ -8,7 +8,11 @@ First of all you'll need to install globally `node`, `watchman` and `react-nativ
 
 Also I use [React Native Debugger](https://github.com/jhen0409/react-native-debugger) for debugging and [Hyper](https://hyper.is/) as default terminal.
 
-<!-- ### What I learned
+### Technologies I used
 
-* One
-* Two -->
+* React Native
+* styled-components
+* RN Facebook SDK
+* RN Navigation
+* ESLint with Airbnb config
+* AsyncStorage
