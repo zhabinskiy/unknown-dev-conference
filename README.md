@@ -4,7 +4,7 @@ Study project based on [React Native (0.48.4)](https://github.com/facebook/react
 
 ### Start a project
 
-First of all you'll need to install globally `node`, `watchman` and `react-native-cli`. Then you need to install all dependecies via `yarn`. Type `yarn start` to start a project.
+First of all you'll need to install globally `node`, `watchman` and `react-native-cli`. Then you need to install all project dependecies via `yarn`. Type `yarn start` to start a project.
 
 Also I use [React Native Debugger](https://github.com/jhen0409/react-native-debugger) for debugging and [Hyper](https://hyper.is/) as default terminal.
 
