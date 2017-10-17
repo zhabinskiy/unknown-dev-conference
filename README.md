@@ -10,9 +10,9 @@ Also I use [React Native Debugger](https://github.com/jhen0409/react-native-debu
 
 ### Technologies I used
 
-* React Native
-* styled-components
-* RN Facebook SDK
-* RN Navigation
-* ESLint with Airbnb config
-* AsyncStorage
+* [React Native](https://github.com/facebook/react-native)
+* [styled-components](https://github.com/styled-components/styled-components)
+* [RN Facebook SDK](https://github.com/facebook/react-native-fbsdk)
+* [RN Navigation](https://github.com/wix/react-native-navigation)
+* [ESLint with Airbnb config](https://github.com/airbnb/javascript)
+* [AsyncStorage](https://facebook.github.io/react-native/releases/next/docs/asyncstorage.html)
